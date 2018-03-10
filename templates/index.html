@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Welcome to StackBooks!</h1>
+<br>
+<br><br>
+<h3>Most mentioned books in {{tag}}</h3>
+
+<div class="row">
+    <div id="chart1" class="chart" style="height: 350px; width: 1000px">
+        <svg></svg>
+    </div>
+</div>
+    <script>
+    var dataj = {{ dataj|tojson|safe }}
+    // console.log(dataj)
+    // console.log({{url_for('static', filename='main.css')}})
+
+    nv.addGraph(function() {
+     var chart = nv.models.discreteBarChart()
+            .x(function(d) { return d.isbn })
+            .y(function(d) { return d.count })
+            .staggerLabels(true)
+            //.staggerLabels(historicalBarChart[0].values.length > 8)
+            .showValues(true)
+            .duration(250).valueFormat(d3.format(',.0d'));
+        chart.rotateLabels(-30);
+        chart.yAxis.tickFormat(d3.format(".0f"));
+        // chart.legend.margin().bottom = 30;
+     d3.select('#chart1 svg')
+          .datum(dataj)
+          .transition().duration(1000)
+          .call(chart);
+
+      nv.utils.windowResize(chart.update);
+      return chart;
+    });
+    </script>
+</div>
+
+<br>
+
+
+<div class="container" id="book_list" >
+{% for book in books %}
+  <div class="row">
+    <div class="news-list">
+        <div class="news-list-item clearfix">
+            <div class="col-xs-2">
+                <img src="{{url_for('static', filename='images')}}/{{book.isbn}}.jpg" class="img-responsive">
+            </div>    
+            <div class="col-xs-9">
+              <a href="https://www.amazon.com/dp/{{book.isbn}}" class="title">{{ book.title }}</a>
+              <div class="info"><strong>Tag: </strong>
+              {% for list in book.tag.split(',')  %}
+                <a href="{{url_for('tag_view', tag=list)}}" class="tag-link">{{ list }} </a>
+              {% endfor %}
+              </div>
+              <div class="info"><strong>Mentioned: </strong>{{ book.count }}</div>
+              <div class="info"><strong>ISBN: </strong>{{ book.isbn }}</div>
+              <div class="info"><strong>Summary: </strong>{{ book.desc  | truncate(350) }} </div>
+              
+              <br>
+            </div>
+        </div>
+    </div>
+            
+  </div>
+
+{% endfor %}
+</div>
+
+
+{% endblock %}
