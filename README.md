@@ -22,13 +22,16 @@ At this stage, we are able to show users how many posts a books is mentioned ove
 I have to resort to a formal web crawling procedure to extract book information from Amazon.com. I choose **Scrapy** since it is rather flexible. Amazon is also very aggressive in protecting itself from data crawling. So I have planned to use rotating proxies and the selenium webdriver mimicking real user behavior rather a cold robot. Things turns out easier than I expected. After setting the browser agent, I quickly scraped the book information I need. Code can be found at: https://github.com/nickytong/stackbooks/tree/master/misc/amazon_book
 
 ## Build the Website
-This time I use the **Flask framework** to build the website due to its lightweight and easy to use. **Bootstrap** is used as the front end framework. NVD3/D3 is used to generate a bar chart showing number of posts mentioning a given book. For the server side, I make SQL queries to extract information and send to the Jinja templates for rendering. 
+This time I use the **Flask framework** to build the website due to its lightweight and easy to use. **Bootstrap** is used as the front end framework. **NVD3/D3** is used to generate a bar chart showing number of posts mentioning a given book. For the server side, I make SQL queries to extract information and send to the Jinja templates for rendering. 
 
 ## Deploy Website
 After satisfied with the local view of the StackBooks website, I use the **Elastic Beanstalk** to deploy the site on a free tier Amazon machine. 
 
 ## Special Thanks
-This project is motivated by Vlad Wetzel who owns http://dev-books.com/ which for the first time presents recommended books on Stack Overflow. After reading his posts that his analysis of the Stack Overflow data received very positive feedback from users and even generated thousands of dollars in the first month it was published, I told myself I can do this also. Although the StackBooks is deployed for the world to view, I have no attention to compete with Vlad Wetzel and only use this project to learn and showcase my skills.
+This project is motivated by Vlad Wetzel who has developed http://dev-books.com/ which for the first time presents recommended books on Stack Overflow. After reading his posts that his analysis of the Stack Overflow book mentioning data received very positive feedback from users and even generated thousands of dollars in the first month it was published, I told myself I can do this myself. Although the StackBooks is deployed for the world to view, I have no attention to compete with Vlad Wetzel's site and only use this project to learn and showcase my skills.
+
+Further, this project is impossible without Stack Overflow providing its data in such an open manner.
+
 
 
  
