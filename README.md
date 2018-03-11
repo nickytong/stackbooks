@@ -1,5 +1,7 @@
 # StackBooks
-What books are mostly discussed by Stack Overflow users? What are the most frequently recommended books in C, Java, Python or R? This project answers these questions by analyzing the entire Stack Overflow data and extracts all books discussed in different tags. The end product is a web site now availabe at: http://stackbooks.us-west-2.elasticbeanstalk.com/.
+What books are mostly discussed by Stack Overflow users? What are the most frequently recommended books in C, Java, Python or R? This project answers these questions by analyzing the entire Stack Overflow data and extracts all books discussed in different tags. 
+
+The end product is a web site now availabe at: http://stackbooks.us-west-2.elasticbeanstalk.com/.
 
 # Technical Aspecs
 ## The Stack Overflow Data
