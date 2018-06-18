@@ -1,5 +1,5 @@
 # StackBooks
-What books are mostly discussed by Stack Overflow users? What are the most frequently recommended books in C, Java, Python or R? This project answers these questions by analyzing the entire Stack Overflow data and extracts all books discussed in different tags. 
+What books are mostly discussed by Stack Overflow users? What are the most frequently recommended books in C, Java, Python or R? This project answers these questions by analyzing the entire Stack Overflow data and extracts all books discussed in different tags.
 
 The end product is a web site now availabe at: http://stackbooks.us-west-2.elasticbeanstalk.com/.
 
@@ -24,7 +24,7 @@ At this stage, we are able to show users how many posts a books is mentioned ove
 I have to resort to a formal web crawling procedure to extract book information from Amazon.com. I choose **Scrapy** since it is rather flexible. Amazon is also very aggressive in protecting itself from data crawling. So I have planned to use rotating proxies and the selenium webdriver mimicking real user behavior rather a cold robot. Things turns out easier than I expected. After setting the browser agent, I quickly scraped the book information I need. Code can be found at: https://github.com/nickytong/stackbooks/tree/master/misc/amazon_book
 
 ## Build the Website
-This time I use the **Flask framework** to build the website due to its lightweight and easy to use. **Bootstrap** is used as the front end framework. **NVD3/D3** is used to generate a bar chart showing number of posts mentioning a given book. For the server side, I make SQL queries to extract information and send to the Jinja templates for rendering. 
+I use the **Flask framework** to build the website due to its lightweight and easy to use. **Bootstrap** is used as the front end framework. **NVD3/D3** is used to generate a bar chart showing number of posts mentioning a given book. For the server side, I make SQL queries to extract information and send to the Jinja templates for rendering. 
 
 ## Deploy Website
 After satisfied with the local view of the StackBooks website, I use the **Elastic Beanstalk** to deploy the site on a free tier Amazon machine. 
